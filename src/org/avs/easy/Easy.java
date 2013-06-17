@@ -23,7 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Easy extends FragmentActivity implements LocationListener, Runnable {
 
-	private Gps gps  = new Gps();
+	private Gps gps;
 	private LatLng latlng;
 	GoogleMap map;
 	LocationManager locationManager;
@@ -31,6 +31,8 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_easy);
+		
+		gps = new Gps();
 		
 		FragmentManager fmanager = getSupportFragmentManager();
         Fragment fragment = fmanager.findFragmentById(R.id.map);
@@ -44,8 +46,10 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000,0, this);
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,0, this);
        		
+		run();
+		
 	}
 
 	@Override
@@ -82,21 +86,21 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		while (true) {
+		//while (true) {
             
              try {
             	 gps.findYourLocation(this, locationManager);
                  
                  latlng = new LatLng(gps.getLatitude(),gps.getLongitude());
-             	map.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 15));
+             	//map.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 15));
              	map.animateCamera(CameraUpdateFactory.zoomIn());
-             	map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+             	map.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
              	
              	CameraPosition cameraPosition = new CameraPosition.Builder()
                  .target(latlng)      // Sets the center of the map to Mountain View
-                 .zoom(17)                   // Sets the zoom
+                 .zoom(13)                   // Sets the zoom
                  .bearing(90)                // Sets the orientation of the camera to east
-                 .tilt(20)                   // Sets the tilt of the camera to 30 degrees
+                 .tilt(30)                   // Sets the tilt of the camera to 30 degrees
                  .build();                   // Creates a CameraPosition from the builder
              	map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                  //double lat = supportMap.getMyLocation().getLatitude();
@@ -120,7 +124,7 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
 				e.printStackTrace();
 			}        
                     
-        }
+        
 		
 	}
 
