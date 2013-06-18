@@ -12,6 +12,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -50,13 +52,6 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
        		
 		run();
 		
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.easy, menu);
-		return true;
 	}
 	
 	@Override
@@ -123,5 +118,29 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
 			}        
                   
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.easy, menu);
+		return true;
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    case R.id.action_refresh:
+	      Toast.makeText(this, "Action refresh selected", Toast.LENGTH_SHORT)
+	          .show();
+	      break;
+	    case R.id.action_settings:
+	      Toast.makeText(this, "Action Settings selected", Toast.LENGTH_SHORT)
+	          .show();
+	      break;
 
+	    default:
+	      break;
+	    }
+
+	    return true;
+	  }
 }
