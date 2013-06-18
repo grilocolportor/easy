@@ -100,13 +100,13 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
                  .target(latlng)      // Sets the center of the map to Mountain View
                  .zoom(13)                   // Sets the zoom
                  .bearing(90)                // Sets the orientation of the camera to east
-                 .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                 .tilt(45)                   // Sets the tilt of the camera to 30 degrees
                  .build();                   // Creates a CameraPosition from the builder
+             	
              	map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                 //double lat = supportMap.getMyLocation().getLatitude();
-                 //double lng = supportMap.getMyLocation().getLongitude();
                  
-                 if(map!=null){
+                 
+                /* if(map!=null){
                  	
                  	
                  	Marker me = map.addMarker(new MarkerOptions()
@@ -115,17 +115,13 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
                  														);
                     	
                  	
-                 }
-
-         	 
-				Thread.sleep(1000);
+                 }*/
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}        
-                    
-        
-		
+                  
 	}
 
 }
