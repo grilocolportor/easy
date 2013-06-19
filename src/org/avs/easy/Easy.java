@@ -43,6 +43,8 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
         
         map.getUiSettings().setCompassEnabled(true);
         map.getUiSettings().setMyLocationButtonEnabled(true);
+        map.getUiSettings().setRotateGesturesEnabled(true);
+        
         map.setTrafficEnabled(true);
         map.setMyLocationEnabled(true);
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -84,16 +86,16 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
 		//while (true) {
             
              try {
-            	 gps.findYourLocation(this, locationManager);
+            	gps.findYourLocation(this, locationManager);
                  
-                 latlng = new LatLng(gps.getLatitude(),gps.getLongitude());
-             	//map.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 15));
-             	map.animateCamera(CameraUpdateFactory.zoomIn());
-             	map.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
+                latlng = new LatLng(gps.getLatitude(),gps.getLongitude());
+             	map.animateCamera(CameraUpdateFactory.newLatLng(latlng));
+             	//map.animateCamera(CameraUpdateFactory.zoomIn());
+             	map.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
              	
              	CameraPosition cameraPosition = new CameraPosition.Builder()
                  .target(latlng)      // Sets the center of the map to Mountain View
-                 .zoom(13)                   // Sets the zoom
+                 .zoom(15)                   // Sets the zoom
                  .bearing(90)                // Sets the orientation of the camera to east
                  .tilt(45)                   // Sets the tilt of the camera to 30 degrees
                  .build();                   // Creates a CameraPosition from the builder
