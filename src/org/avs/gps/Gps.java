@@ -1,5 +1,6 @@
 package org.avs.gps;
 
+import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.model.LatLng;
 
 import android.content.Context;
@@ -12,7 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 
-public class Gps implements LocationListener{
+public class Gps implements LocationSource, LocationListener{
 	private LocationManager locationManager;
 	private String provider;
 	private LatLng latlng;
@@ -91,6 +92,18 @@ public class Gps implements LocationListener{
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void activate(OnLocationChangedListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deactivate() {
 		// TODO Auto-generated method stub
 		
 	}

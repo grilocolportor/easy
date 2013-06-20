@@ -1,12 +1,15 @@
 package org.avs.easy;
 
+import mensagens.Alertas;
+import network.Internet;
+
 import org.avs.gps.Gps;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,19 +23,30 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Easy extends FragmentActivity implements LocationListener, Runnable {
+public class Easy extends FragmentActivity implements   LocationListener, Runnable {
 
 	private Gps gps;
 	private LatLng latlng;
 	GoogleMap map;
 	LocationManager locationManager;
 	
+	Alertas alerta = new Alertas();
+	Internet internet;
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_easy);
+		
+		internet = new Internet(this);
+		
+		if (!internet.conectado()) {
+			// Internet Connection is not present
+			alerta.showAlertDialog(Easy.this, "Internet Connection Error",
+					"Please connect to working Internet connection", false);
+			// stop executing code by return
+			return;
+		}
 		
 		gps = new Gps();
 		
@@ -130,9 +144,16 @@ public class Easy extends FragmentActivity implements LocationListener, Runnable
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
-	    case R.id.action_refresh:
-	      Toast.makeText(this, "Action refresh selected", Toast.LENGTH_SHORT)
-	          .show();
+	    case R.id.lugares:
+	    	Intent i = new Intent(getApplicationContext(), Lugares.class);
+			// Sending user current geo location
+			i.putExtra("user_latitude", Double.toString(gps.getLatitude()));
+			i.putExtra("user_longitude", Double.toString(gps.getLongitude()));
+			
+			// passing near places to map activity
+			//i.putExtra("near_places", nearPlaces);
+			// staring activity
+			startActivity(i);
 	      break;
 	    case R.id.action_settings:
 	      Toast.makeText(this, "Action Settings selected", Toast.LENGTH_SHORT)
