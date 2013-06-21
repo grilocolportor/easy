@@ -143,21 +143,22 @@ public class Easy extends FragmentActivity implements   LocationListener, Runnab
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent i;
 	    switch (item.getItemId()) {
-	    case R.id.lugares:
-	    	Intent i = new Intent(getApplicationContext(), Lugares.class);
+	    case R.id.mnu_categoria:
+	    	i = new Intent(getApplicationContext(), Lugares.class);
 			// Sending user current geo location
-			i.putExtra("user_latitude", Double.toString(gps.getLatitude()));
-			i.putExtra("user_longitude", Double.toString(gps.getLongitude()));
+			//i.putExtra("user_latitude", Double.toString(gps.getLatitude()));
+			//i.putExtra("user_longitude", Double.toString(gps.getLongitude()));
 			
 			// passing near places to map activity
 			//i.putExtra("near_places", nearPlaces);
 			// staring activity
 			startActivity(i);
 	      break;
-	    case R.id.action_settings:
-	      Toast.makeText(this, "Action Settings selected", Toast.LENGTH_SHORT)
-	          .show();
+	    case R.id.mnu_favorito:
+	      i = new Intent(getApplicationContext(), Favorito.class);
+	      startActivity(i);
 	      break;
 
 	    default:
