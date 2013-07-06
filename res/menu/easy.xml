@@ -2,8 +2,12 @@
 
     
     <item
-        android:id="@+id/action_settings"
-        android:title="Settings" android:orderInCategory="100">
+        android:id="@+id/mnu_categoria"
+        android:title="@string/mnu_categoria"
+        android:orderInCategory="100">
     </item>
-    <item android:id="@+id/action_refresh" android:title="refresh" android:orderInCategory="100"></item>
+    <item android:id="@+id/mnu_favorito" 
+        android:title="@string/mnu_favorito"
+        android:orderInCategory="100">
+    </item>
 </menu>

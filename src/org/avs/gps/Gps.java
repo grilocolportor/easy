@@ -1,6 +1,6 @@
 package org.avs.gps;
 
-import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
+import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.model.LatLng;
 
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 
-public class Gps implements OnMyLocationChangeListener{
+public class Gps implements LocationSource, LocationListener{
 	private LocationManager locationManager;
 	private String provider;
 	private LatLng latlng;
@@ -50,7 +50,7 @@ public class Gps implements OnMyLocationChangeListener{
 		Location location = locationManager.getLastKnownLocation(provider);
 		
 		if(location!=null){
-			onMyLocationChange(location);
+			onLocationChanged(location);
 		}else{
 			lat=-8.02044;
 			lng= -34.9817;
@@ -72,13 +72,40 @@ public class Gps implements OnMyLocationChangeListener{
 	}
 
 	@Override
-	public void onMyLocationChange(Location location) {
+	public void onLocationChanged(Location location) {
+		lat = location.getLatitude();
+		lng =  location.getLongitude();
+		latlng = new LatLng(lat,lng);
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
-		lat=location.getLatitude();
-		lng=location.getLongitude();
-		latlng=new LatLng(lat, lng);
 		
 	}
 
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void activate(OnLocationChangedListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deactivate() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

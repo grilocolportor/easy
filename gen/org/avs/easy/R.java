@@ -8,6 +8,10 @@
 package org.avs.easy;
 
 public final class R {
+    public static final class array {
+        public static final int categoria_pt=0x7f070000;
+        public static final int categorias=0x7f070001;
+    }
     public static final class attr {
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
@@ -151,8 +155,8 @@ containing a value of this type.
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f070000;
-        public static final int activity_vertical_margin=0x7f070001;
+        public static final int activity_horizontal_margin=0x7f080000;
+        public static final int activity_vertical_margin=0x7f080001;
     }
     public static final class drawable {
         public static final int common_signin_btn_icon_dark=0x7f020000;
@@ -179,28 +183,52 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020015;
         public static final int common_signin_btn_text_pressed_dark=0x7f020016;
         public static final int common_signin_btn_text_pressed_light=0x7f020017;
-        public static final int ic_launcher=0x7f020018;
+        public static final int fail=0x7f020018;
+        public static final int ic_launcher=0x7f020019;
+        public static final int success=0x7f02001a;
     }
     public static final class id {
-        public static final int action_refresh=0x7f050008;
-        public static final int action_settings=0x7f050007;
+        public static final int action_settings=0x7f05000f;
+        public static final int btnAddFavorito=0x7f05000a;
+        public static final int btnPesquisar=0x7f050009;
+        public static final int buttons=0x7f050008;
+        public static final int categoria_checked=0x7f05000e;
+        public static final int categoria_icon=0x7f05000c;
+        public static final int categoria_text=0x7f05000d;
         public static final int hybrid=0x7f050004;
-        public static final int map=0x7f050006;
+        public static final int linearPesquisa=0x7f050005;
+        public static final int mainListView=0x7f050007;
+        public static final int map=0x7f05000b;
+        public static final int mnu_categoria=0x7f050010;
+        public static final int mnu_favorito=0x7f050011;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
-        public static final int tv_location=0x7f050005;
+        public static final int texPesquisa=0x7f050006;
     }
     public static final class layout {
-        public static final int activity_easy=0x7f030000;
+        public static final int activity_categoria=0x7f030000;
+        public static final int activity_easy=0x7f030001;
+        public static final int list_categoria=0x7f030002;
     }
     public static final class menu {
-        public static final int easy=0x7f090000;
+        public static final int categoria=0x7f0a0000;
+        public static final int easy=0x7f0a0001;
+        public static final int favorito=0x7f0a0002;
+        public static final int lugares=0x7f0a0003;
     }
     public static final class string {
-        public static final int action_settings=0x7f060016;
-        public static final int app_name=0x7f060015;
+        public static final int ButtonOutrosLugares=0x7f060076;
+        public static final int ButtonPesquisarLugares=0x7f060077;
+        public static final int accounting=0x7f060015;
+        public static final int action_settings=0x7f06006f;
+        public static final int airport=0x7f060016;
+        public static final int amusement_park=0x7f060017;
+        public static final int app_name=0x7f06006e;
+        public static final int aquarium=0x7f060018;
+        public static final int art_gallery=0x7f060019;
+        public static final int atm=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
         public static final int auth_client_availability_notification_title=0x7f06000f;
@@ -210,6 +238,25 @@ containing a value of this type.
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
         public static final int auth_client_requested_by_msg=0x7f060011;
+        public static final int bakery=0x7f06001b;
+        public static final int bank=0x7f06001c;
+        public static final int bar=0x7f06001d;
+        public static final int beauty_salon=0x7f06001e;
+        public static final int bicycle_store=0x7f06001f;
+        public static final int book_store=0x7f060020;
+        public static final int bowling_alley=0x7f060021;
+        public static final int bus_station=0x7f060022;
+        public static final int cafe=0x7f060023;
+        public static final int campground=0x7f060024;
+        public static final int car_dealer=0x7f060025;
+        public static final int car_rental=0x7f060026;
+        public static final int car_repair=0x7f060027;
+        public static final int car_wash=0x7f060028;
+        public static final int casino=0x7f060029;
+        public static final int cemetery=0x7f06002a;
+        public static final int church=0x7f06002b;
+        public static final int city_hall=0x7f06002c;
+        public static final int clothing_store=0x7f06002d;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -265,7 +312,39 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f06000e;
-        public static final int hello_world=0x7f060017;
+        public static final int convenience_store=0x7f06002e;
+        public static final int courthouse=0x7f06002f;
+        public static final int dentist=0x7f060030;
+        public static final int department_store=0x7f060031;
+        public static final int doctor=0x7f060032;
+        public static final int electrician=0x7f060033;
+        public static final int electronics_store=0x7f060034;
+        public static final int embassy=0x7f060035;
+        public static final int establishment=0x7f060036;
+        public static final int finance=0x7f060037;
+        public static final int fire_station=0x7f060038;
+        public static final int florist=0x7f060039;
+        public static final int food=0x7f06003a;
+        public static final int funeral_home=0x7f06003b;
+        public static final int furniture_store=0x7f06003c;
+        public static final int gas_station=0x7f06003d;
+        public static final int general_contractor=0x7f06003e;
+        public static final int grocery_or_supermarket=0x7f06003f;
+        public static final int gym=0x7f060040;
+        public static final int hair_care=0x7f060041;
+        public static final int hardware_store=0x7f060042;
+        public static final int health=0x7f060043;
+        public static final int hello_world=0x7f060070;
+        public static final int home_goods_store=0x7f060044;
+        public static final int hospital=0x7f060045;
+        public static final int insurance_agency=0x7f060046;
+        public static final int jewelry_store=0x7f060047;
+        public static final int laundry=0x7f060048;
+        public static final int lawyer=0x7f060049;
+        public static final int lblRaio=0x7f060074;
+        public static final int lblRaioValor=0x7f060075;
+        public static final int library=0x7f06004a;
+        public static final int liquor_store=0x7f06004b;
         /**  Location client code resources (prefix with location_client) 
 
         Begin strings for location.reporting
@@ -277,6 +356,44 @@ containing a value of this type.
         public static final int location_client_ulr_inactive_age_under_13=0x7f060012;
         public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
         public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
+        public static final int locksmith=0x7f06004c;
+        public static final int lodging=0x7f06004d;
+        public static final int meal_delivery=0x7f06004e;
+        public static final int meal_takeaway=0x7f06004f;
+        public static final int mnu_categoria=0x7f060072;
+        public static final int mnu_favorito=0x7f060073;
+        public static final int mosque=0x7f060050;
+        public static final int movie_rental=0x7f060051;
+        public static final int movie_theater=0x7f060052;
+        public static final int moving_company=0x7f060053;
+        public static final int museum=0x7f060054;
+        public static final int night_club=0x7f060055;
+        public static final int painter=0x7f060056;
+        public static final int park=0x7f060057;
+        public static final int parking=0x7f060058;
+        public static final int pet_store=0x7f060059;
+        public static final int pharmacy=0x7f06005a;
+        public static final int physiotherapist=0x7f06005b;
+        public static final int plumber=0x7f06005c;
+        public static final int police=0x7f06005d;
+        public static final int post_office=0x7f06005e;
+        public static final int real_estate_agency=0x7f06005f;
+        public static final int restaurant=0x7f060060;
+        public static final int school=0x7f060061;
+        public static final int shoe_store=0x7f060062;
+        public static final int shopping_mall=0x7f060063;
+        public static final int spa=0x7f060064;
+        public static final int stadium=0x7f060065;
+        public static final int subway_station=0x7f060066;
+        public static final int synagogue=0x7f060067;
+        public static final int taxi_stand=0x7f060068;
+        public static final int title_activity_categoria=0x7f060071;
+        public static final int title_activity_favorito=0x7f060078;
+        public static final int train_station=0x7f060069;
+        public static final int travel_agency=0x7f06006a;
+        public static final int university=0x7f06006b;
+        public static final int veterinary_care=0x7f06006c;
+        public static final int zoo=0x7f06006d;
     }
     public static final class style {
         /** 
@@ -300,11 +417,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f090001;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.
