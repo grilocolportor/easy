@@ -20,6 +20,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,8 +34,9 @@ public class Categoria extends Activity {
 	private ArrayList<mItems> lstEstados_Encontrados = new ArrayList<mItems>();
 	private ArrayList<mItems> planetList = new ArrayList<mItems>();
 	private EditText et;
+	private SeekBar seekBar;
 	private String lstrEstadosSelecionados = "";
-	
+	private TextView raio;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,33 @@ public class Categoria extends Activity {
 				mainListView = (ListView) findViewById(R.id.mainListView);
 				mainListView.setChoiceMode(mainListView.CHOICE_MODE_MULTIPLE);
 				et = (EditText) findViewById(R.id.texPesquisa);
+				raio = (TextView) findViewById(R.id.textView1);
+				seekBar = (SeekBar) findViewById(R.id.seekBar1);
+				seekBar.setProgress(1000);
+				String strRaio = "Raio: " +String.valueOf(seekBar.getProgress())+ "m";
+				raio.setText(strRaio);
+				seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+					
+					
+					
+					public void onStopTrackingTouch(SeekBar seekBar) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					public void onStartTrackingTouch(SeekBar seekBar) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					public void onProgressChanged(SeekBar seekBar, int progress,
+							boolean fromUser) {
+						// TODO Auto-generated method stub
+						String strRaios = "Raio: " +String.valueOf(seekBar.getProgress())+ "m";
+						raio.setText(strRaios);
+						
+					}
+				});
 				// When item is tapped, toggle checked properties of CheckBox and
 				// Planet.
 				mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -423,6 +453,7 @@ public class Categoria extends Activity {
 		    	montarCategoria();
 		    	Intent i = getIntent();
 		    	i.putExtra("categoria", lstrEstadosSelecionados );
+		    	i.putExtra("raio", raio.getText());
 		    	setResult(RESULT_OK, i);
 		    	finish();
 		    	

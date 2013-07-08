@@ -73,12 +73,15 @@ public class Easy extends FragmentActivity implements   LocationListener, Runnab
 	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(arg0, arg1, arg2);
-		
+		String categoria="";
+		String raio="";
 		if(arg2.getExtras().containsKey("categoria")){
-			String categoria = arg2.getStringExtra("categoria");
-			Toast.makeText(this, "Estados marcados : " + categoria, Toast.LENGTH_LONG).show();
+			categoria = arg2.getStringExtra("categoria");
 		}
-		
+		if(arg2.getExtras().containsKey("raio")){
+			raio = arg2.getStringExtra("raio");
+		}
+		Toast.makeText(this, "Raio: " + raio +" :: Estados marcados : " + categoria, Toast.LENGTH_LONG).show();
 		
 	}
 	
