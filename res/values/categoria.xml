@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categoria_pt">
+        
+    <item>contabilidade</item>
+	<item>aeroporto</item>
+	<item>parque de diversões</item>
+	<item>aquario</item>
+	<item>galeria de arte</item>
+	<item>caixa eletrônico</item>
+	<item>padaria</item>
+	<item>bancos</item>
+	<item>bares</item>
+	<item>salão de beleza</item>
+	<item>loja de bicicletas</item>
+	<item>livrarias</item>
+	<item>boliche</item>
+	<item>rodoviária</item>
+	<item>cafés</item>
+	<item>área de camping</item>
+	<item>vendas de automóveis</item>
+	<item>aluguel de automóveis</item>
+	<item>oficina automotiva</item>
+	<item>lava-jato</item>
+	<item>casino">cassino</item>
+	<item>cemitério</item>
+	<item>igrejas</item>
+	<item>prefeitura</item>
+	<item>loja de roupas</item>
+	<item>loja de conveniência</item>
+	<item>tribunal</item>
+	<item>dentistas</item>
+	<item>loja de departamentos</item>
+	<item>médicos</item>
+	<item>eletricista</item>
+	<item>loja de eletrônicos</item>
+	<item>embaixadas</item>
+	<item>estabelecimentos</item>
+	<item>financiamentos</item>
+	<item>bombeiros</item>
+	<item>floriculturas</item>
+	<item>comida</item>
+	<item>funerária</item>
+	<item>loja de móveis</item>
+	<item>posto de gasolina</item>
+	<item>empreiteiras</item>
+	<item>mercearias/supermercados</item>
+	<item>ginásio</item>
+	<item>cabelereira</item>
+	<item>loja de ferragens</item>
+	<item>saúde</item>
+	<item>artigos para o lar</item>
+	<item>hospital</item>
+	<item>agência de seguros</item>
+	<item>joalheiria</item>
+	<item>lavanderia</item>
+	<item>advogados</item>
+	<item>biblioteca</item>
+	<item>loja de bebidas</item>
+	<item>serralheiro</item>
+	<item>alojamentos</item>
+	<item>entrega de refeições</item>
+	<item>self-service	</item>
+	<item>mesquita</item>
+	<item>locadora</item>
+	<item>cinemas</item>
+	<item>transportadoras</item>
+	<item>museu</item>
+	<item>night club</item>
+	<item>pintores</item>
+	<item>parques</item>
+	<item>estacionamentos</item>
+	<item>pet shopping</item>
+	<item>farmácias</item>
+	<item>fisioterapeutas</item>
+	<item>encanador</item>
+	<item>policia</item>
+	<item>correios</item>
+	<item>corretora de imóveis</item>
+	<item>restaurantes</item>
+	<item>escolas</item>
+	<item>loja de calçados</item>
+	<item>shoppings centers</item>
+	<item>spa</item>
+	<item>estádios</item>
+	<item>metrô</item>
+	<item>sinagogas</item>
+	<item>ponto de táxi</item>
+	<item>estação de trens</item>
+	<item>agencia de turismo</item>
+	<item>universidades</item>
+	<item>clínca veterinária</item>
+	<item>zoológico</item>
+        
+        
+    </string-array>
+    
+</resources>

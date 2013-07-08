@@ -69,6 +69,18 @@ public class Easy extends FragmentActivity implements   LocationListener, Runnab
 		run();
 		
 	}
+	@Override
+	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(arg0, arg1, arg2);
+		
+		if(arg2.getExtras().containsKey("categoria")){
+			String categoria = arg2.getStringExtra("categoria");
+			Toast.makeText(this, "Estados marcados : " + categoria, Toast.LENGTH_LONG).show();
+		}
+		
+		
+	}
 	
 	@Override
 	public void onLocationChanged(Location location) {
@@ -156,10 +168,8 @@ public class Easy extends FragmentActivity implements   LocationListener, Runnab
 			//i.putExtra("near_places", nearPlaces);
 			// staring activity
 			//startActivity(i);
-			startActivityForResult(i, 0);
-			Bundle bundle = new Bundle();
-			String categoria = bundle.getString("categoria");
-			Toast.makeText(this, "Estados marcados : " + categoria, Toast.LENGTH_LONG).show();
+			startActivityForResult(i, 1);
+			
 			
 	      break;
 	    case R.id.mnu_favorito:
