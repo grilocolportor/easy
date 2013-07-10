@@ -50,7 +50,7 @@ public class Categoria extends Activity {
 				raio = (TextView) findViewById(R.id.textView1);
 				seekBar = (SeekBar) findViewById(R.id.seekBar1);
 				seekBar.setProgress(1000);
-				String strRaio = "Raio: " +String.valueOf(seekBar.getProgress())+ "m";
+				String strRaio = String.valueOf(seekBar.getProgress());
 				raio.setText(strRaio);
 				seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 					

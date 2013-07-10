@@ -10,7 +10,8 @@ package org.avs.easy;
 public final class R {
     public static final class array {
         public static final int categoria_pt=0x7f070000;
-        public static final int categorias=0x7f070001;
+        public static final int place_type=0x7f070001;
+        public static final int place_type_name=0x7f070002;
     }
     public static final class attr {
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
@@ -188,7 +189,7 @@ containing a value of this type.
         public static final int success=0x7f02001a;
     }
     public static final class id {
-        public static final int action_settings=0x7f050012;
+        public static final int action_settings=0x7f050014;
         public static final int btnAddFavorito=0x7f05000d;
         public static final int btnPesquisar=0x7f05000c;
         public static final int buttons=0x7f05000b;
@@ -200,10 +201,12 @@ containing a value of this type.
         public static final int linearRaio=0x7f050008;
         public static final int mainListView=0x7f050007;
         public static final int map=0x7f05000e;
-        public static final int mnu_categoria=0x7f050013;
-        public static final int mnu_favorito=0x7f050014;
+        public static final int mnu_categoria=0x7f050015;
+        public static final int mnu_favorito=0x7f050016;
+        public static final int name=0x7f050013;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
+        public static final int reference=0x7f050012;
         public static final int satellite=0x7f050002;
         public static final int seekBar1=0x7f050009;
         public static final int terrain=0x7f050003;
@@ -214,6 +217,7 @@ containing a value of this type.
         public static final int activity_categoria=0x7f030000;
         public static final int activity_easy=0x7f030001;
         public static final int list_categoria=0x7f030002;
+        public static final int list_item=0x7f030003;
     }
     public static final class menu {
         public static final int categoria=0x7f0a0000;
@@ -363,6 +367,7 @@ containing a value of this type.
         public static final int lodging=0x7f06004d;
         public static final int meal_delivery=0x7f06004e;
         public static final int meal_takeaway=0x7f06004f;
+        public static final int menu_settings=0x7f06007a;
         public static final int mnu_categoria=0x7f060072;
         public static final int mnu_favorito=0x7f060073;
         public static final int mosque=0x7f060050;
@@ -387,6 +392,7 @@ containing a value of this type.
         public static final int shopping_mall=0x7f060063;
         public static final int spa=0x7f060064;
         public static final int stadium=0x7f060065;
+        public static final int str_btn_find=0x7f060079;
         public static final int subway_station=0x7f060066;
         public static final int synagogue=0x7f060067;
         public static final int taxi_stand=0x7f060068;
