@@ -75,23 +75,7 @@ public class Easy extends FragmentActivity implements   LocationListener {
 			// stop executing code by return
 			return;
 		}
-		
-		// Array of place types
-				mPlaceType = getResources().getStringArray(R.array.place_type);
-				
-				// Array of place type names
-				mPlaceTypeName = getResources().getStringArray(R.array.place_type_name);
-				
-				// Creating an array adapter with an array of Place types
-				// to populate the spinner
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, mPlaceTypeName);
-				
-				Button btnFind;
-				
-				// Getting reference to Find Button
-				//btnFind = ( Button ) findViewById(R.id.btn_find);
-				
-				
+							
 				// Getting Google Play availability status
 		        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
 
@@ -104,7 +88,8 @@ public class Easy extends FragmentActivity implements   LocationListener {
 
 		        }else { // Google Play Services are available
 		        	
-			    	// Getting reference to the SupportMapFragment
+		        	gps = new Gps(Easy.this);
+		        		// Getting reference to the SupportMapFragment
 			    	SupportMapFragment fragment = ( SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 			    			
 			    	// Getting Google Map
@@ -136,6 +121,31 @@ public class Easy extends FragmentActivity implements   LocationListener {
 		        }
 
 	}
+	
+	public void getPosicaoUsuario(){
+		Runnable runnable = new Runnable(){
+
+			@Override
+			public void run() {
+				mLatitude = gps.getLatitude();
+				mLongitude = gps.getLongitude();
+				timeGetPosicao();
+			}
+			
+		};
+		
+	}
+	
+	private void timeGetPosicao(){
+		try {
+		      Thread.sleep(2000);
+		    } catch (InterruptedException e) {
+		      e.printStackTrace();
+		    }
+		
+	}
+
+	
 	@Override
 	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
 		// TODO Auto-generated method stub
@@ -307,8 +317,6 @@ public class Easy extends FragmentActivity implements   LocationListener {
 		
 	}
 	
-
-	
 	@Override
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
@@ -375,6 +383,15 @@ public class Easy extends FragmentActivity implements   LocationListener {
 	      break;
 	    case R.id.mnu_favorito:
 	    	mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+	    	LatLng latLng = new LatLng(mLatitude, mLongitude);
+	    	 CameraPosition cameraPosition = new CameraPosition.Builder()
+	    	 .target(latLng)
+	         .zoom(17)                   // Sets the zoom
+	         .bearing(90)                // Sets the orientation of the camera to east
+	         .tilt(45)                   // Sets the tilt of the camera to 30 degrees
+	         .build();                   // Creates a CameraPosition from the builder
+	     	
+	     	mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition), 2000, null);
 	      break;
 
 	    default:
