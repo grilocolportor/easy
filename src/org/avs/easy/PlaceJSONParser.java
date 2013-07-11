@@ -55,6 +55,7 @@ public class PlaceJSONParser {
 		String vicinity="-NA-";
 		String latitude="";
 		String longitude="";
+		//String icon="";
 				
 		
 		try {
@@ -68,6 +69,10 @@ public class PlaceJSONParser {
 				vicinity = jPlace.getString("vicinity");
 			}	
 			
+			//if(!jPlace.isNull("icon")){
+			//	icon = jPlace.getString("icon");
+			//}
+			
 			latitude = jPlace.getJSONObject("geometry").getJSONObject("location").getString("lat");
 			longitude = jPlace.getJSONObject("geometry").getJSONObject("location").getString("lng");			
 			
@@ -76,6 +81,7 @@ public class PlaceJSONParser {
 			place.put("vicinity", vicinity);
 			place.put("lat", latitude);
 			place.put("lng", longitude);
+			//place.put("icon", icon);
 			
 			
 		} catch (JSONException e) {			

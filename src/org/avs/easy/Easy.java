@@ -34,9 +34,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.internal.bc;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -165,7 +168,7 @@ public class Easy extends FragmentActivity implements   LocationListener {
 		sb.append("&radius="+raio);
 		sb.append("&types="+categoria);
 		sb.append("&sensor=true");
-		sb.append("&key=AIzaSyBdqOUnyB-TUoJnnMgqjsSmGE9iBfuq92o");
+		sb.append("&key=AIzaSyAk2aW4LddxLwKpOv8KVy-EkvwVPoLMxR0");
 		
 		
 		// Creating a new non-ui thread task to download Google place json data 
@@ -299,10 +302,16 @@ public class Easy extends FragmentActivity implements   LocationListener {
 	            // Getting vicinity
 	            String vicinity = hmPlace.get("vicinity");
 	            
-	            LatLng latLng = new LatLng(lat, lng);
+	            // getting icon
+	           // String icon = hmPlace.get("icon");
 	            
-	            // Setting the position for the marker
+	            LatLng latLng = new LatLng(lat, lng);
+	          
+	            // Setting the position for the marker  
 	            markerOptions.position(latLng);
+	            
+	            //setting icon	           
+	           // markerOptions.icon(BitmapDescriptorFactory.fromFile(icon));
 	
 	            // Setting the title for the marker. 
 	            //This will be displayed on taping the marker
