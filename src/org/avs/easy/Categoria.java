@@ -69,7 +69,7 @@ public class Categoria extends Activity {
 					public void onProgressChanged(SeekBar seekBar, int progress,
 							boolean fromUser) {
 						// TODO Auto-generated method stub
-						String strRaios = "Raio: " +String.valueOf(seekBar.getProgress())+ "m";
+						String strRaios = String.valueOf(seekBar.getProgress());
 						raio.setText(strRaios);
 						
 					}

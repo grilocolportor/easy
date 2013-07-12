@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -65,7 +66,10 @@ public class Easy extends FragmentActivity implements   LocationListener, OnMark
 	double mLatitude=0;
 	double mLongitude=0;
 	
-	Marker marker;
+	List<Marker> listMarker = new ArrayList<Marker>();
+	
+	
+	
 	LocationManager locationManager;
 	
 	private String provider;
@@ -238,33 +242,6 @@ public class Easy extends FragmentActivity implements   LocationListener, OnMark
 		
 	}
 	
-	public void getPosicaoUsuario(){
-		Runnable runnable = new Runnable(){
-
-			@Override
-			public void run() {
-//				mLatitude = gps.getLatitude();
-//				mLongitude = gps.getLongitude();
-//				marker = mGoogleMap.addMarker(new MarkerOptions()
-//				.title("Você está aqui!")
-//				.visible(true)
-//				.position(new LatLng(mLatitude,mLongitude )));
-				timeGetPosicao();
-			}
-			
-		};
-		
-	}
-	
-	private void timeGetPosicao(){
-		try {
-		      Thread.sleep(2000);
-		    } catch (InterruptedException e) {
-		      e.printStackTrace();
-		    }
-		
-	}
-
 	
 	@Override
 	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
@@ -448,13 +425,15 @@ public class Easy extends FragmentActivity implements   LocationListener, OnMark
 	
 	            // Setting the title for the marker. 
 	            //This will be displayed on taping the marker
-	            //markerOptions.title(name + " : " + vicinity);	            
+	            //markerOptions.title(name + " : " + vicinity);	      
+	           
 	
-	            marker = mGoogleMap.addMarker(new MarkerOptions()
+	           Marker  marker = mGoogleMap.addMarker(new MarkerOptions()
 	            .position(latLng)
 	            .title(name + " : "+ vicinity));
 	            // Placing a marker on the touched position
-	           // mGoogleMap.addMarker(markerOptions);            
+	           // mGoogleMap.addMarker(markerOptions);     
+	           listMarker.add(marker);
             
 			}		
 			
@@ -551,9 +530,16 @@ public class Easy extends FragmentActivity implements   LocationListener, OnMark
 	@Override
 	public boolean onMarkerClick(Marker marker) {
 		// TODO Auto-generated method stub
-		
-		if(marker.equals(marker)){
-			Toast.makeText(this, "Icone clicado", Toast.LENGTH_LONG).show();
+		for(int i=0;i<listMarker.size();i++){
+			if(listMarker.get(i).getId().contentEquals(marker.getId())){
+				Toast.makeText(this, "Icone clicado" + listMarker.get(i).getTitle(), Toast.LENGTH_LONG).show();
+				Intent intent = new Intent(getApplicationContext(), Estabelecimento.class);
+				Bundle param = new Bundle();
+				param.putString("title", listMarker.get(i).getTitle());
+				intent.putExtras(param);
+				startActivity(intent);
+				
+			}
 		}
 		return false;
 	}

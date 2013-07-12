@@ -13,26 +13,24 @@
     <string name="ButtonPesquisarLugares">Procurar...</string>
     <string name="title_activity_favorito">Favorito</string>
     <string name="str_btn_find">Buscar</string>
-
-     <string name="app_name">Easy</string>
+    <string name="app_name">Easy</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="str_btn_find">Find</string>
-    
+
     <string-array name="place_type">
         <item>airport</item>
         <item>atm</item>
         <item>bank</item>
-        <item>bus_station</item>        
+        <item>bus_station</item>
         <item>church</item>
         <item>doctor</item>
-        <item>hospital</item>        
+        <item>hospital</item>
         <item>mosque</item>
         <item>movie_theater</item>
         <item>hindu_temple</item>
         <item>restaurant</item>
     </string-array>
-    
     <string-array name="place_type_name">
         <item>Airport</item>
         <item>ATM</item>
@@ -45,5 +43,8 @@
         <item>Movie Theater</item>
         <item>Hindu Temple</item>
         <item>Restaurant</item>
-    </string-array>   
+    </string-array>
+
+    <string name="title_activity_estabelecimento">Estabelecimento</string>
+
 </resources>

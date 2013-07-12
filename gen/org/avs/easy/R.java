@@ -189,41 +189,44 @@ containing a value of this type.
         public static final int success=0x7f02001a;
     }
     public static final class id {
-        public static final int action_settings=0x7f050014;
+        public static final int action_settings=0x7f050015;
         public static final int btnAddFavorito=0x7f05000d;
         public static final int btnPesquisar=0x7f05000c;
         public static final int buttons=0x7f05000b;
-        public static final int categoria_checked=0x7f050011;
-        public static final int categoria_icon=0x7f05000f;
-        public static final int categoria_text=0x7f050010;
+        public static final int categoria_checked=0x7f050012;
+        public static final int categoria_icon=0x7f050010;
+        public static final int categoria_text=0x7f050011;
         public static final int hybrid=0x7f050004;
         public static final int linearPesquisa=0x7f050005;
         public static final int linearRaio=0x7f050008;
         public static final int mainListView=0x7f050007;
         public static final int map=0x7f05000e;
-        public static final int mnu_categoria=0x7f050015;
-        public static final int mnu_favorito=0x7f050016;
-        public static final int name=0x7f050013;
+        public static final int mnu_categoria=0x7f050016;
+        public static final int mnu_favorito=0x7f050017;
+        public static final int name=0x7f050014;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int reference=0x7f050012;
+        public static final int reference=0x7f050013;
         public static final int satellite=0x7f050002;
         public static final int seekBar1=0x7f050009;
         public static final int terrain=0x7f050003;
+        public static final int teste=0x7f05000f;
         public static final int texPesquisa=0x7f050006;
         public static final int textView1=0x7f05000a;
     }
     public static final class layout {
         public static final int activity_categoria=0x7f030000;
         public static final int activity_easy=0x7f030001;
-        public static final int list_categoria=0x7f030002;
-        public static final int list_item=0x7f030003;
+        public static final int activity_estabelecimento=0x7f030002;
+        public static final int list_categoria=0x7f030003;
+        public static final int list_item=0x7f030004;
     }
     public static final class menu {
         public static final int categoria=0x7f0a0000;
         public static final int easy=0x7f0a0001;
-        public static final int favorito=0x7f0a0002;
-        public static final int lugares=0x7f0a0003;
+        public static final int estabelecimento=0x7f0a0002;
+        public static final int favorito=0x7f0a0003;
+        public static final int lugares=0x7f0a0004;
     }
     public static final class string {
         public static final int ButtonOutrosLugares=0x7f060076;
@@ -397,6 +400,7 @@ containing a value of this type.
         public static final int synagogue=0x7f060067;
         public static final int taxi_stand=0x7f060068;
         public static final int title_activity_categoria=0x7f060071;
+        public static final int title_activity_estabelecimento=0x7f06007b;
         public static final int title_activity_favorito=0x7f060078;
         public static final int train_station=0x7f060069;
         public static final int travel_agency=0x7f06006a;
