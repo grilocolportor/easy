@@ -13,7 +13,7 @@ public class Estabelecimento extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_estabelecimento);
 		
-		TextView t = (TextView) findViewById(R.id.teste);
+		TextView t = (TextView) findViewById(R.id.estabelecimento);
 		
 		Intent i = getIntent();
 		Bundle param = i.getExtras();

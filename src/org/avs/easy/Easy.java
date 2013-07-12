@@ -430,7 +430,8 @@ public class Easy extends FragmentActivity implements   LocationListener, OnMark
 	
 	           Marker  marker = mGoogleMap.addMarker(new MarkerOptions()
 	            .position(latLng)
-	            .title(name + " : "+ vicinity));
+	            .title(name)
+	            .snippet(vicinity));
 	            // Placing a marker on the touched position
 	           // mGoogleMap.addMarker(markerOptions);     
 	           listMarker.add(marker);
