@@ -127,6 +127,10 @@ public class Gps extends Service implements LocationListener{
  
         return location;
     }
+    
+    public LocationManager getLocationManager(){
+    	return this.locationManager;
+    }
      
     /**
      * Stop using GPS listener
@@ -136,6 +140,11 @@ public class Gps extends Service implements LocationListener{
         if(locationManager != null){
             locationManager.removeUpdates(Gps.this);
         }       
+    }
+    
+    public LatLng getLatLng(){
+    	LatLng ll = new LatLng(latitude, longitude);
+    	return ll;
     }
      
     /**
@@ -172,6 +181,8 @@ public class Gps extends Service implements LocationListener{
       
     @Override
     public void onLocationChanged(Location location) {
+    	longitude = location.getLongitude();
+    	latitude = location.getLatitude();
     }
  
     @Override

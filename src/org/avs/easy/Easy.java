@@ -17,34 +17,34 @@ import org.json.JSONObject;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.internal.bc;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Easy extends FragmentActivity implements   LocationListener {
+public class Easy extends FragmentActivity implements   LocationListener, OnMarkerClickListener {
 
 	private Gps gps;
 	private LatLng latlng;
@@ -64,6 +64,33 @@ public class Easy extends FragmentActivity implements   LocationListener {
 	
 	double mLatitude=0;
 	double mLongitude=0;
+	
+	Marker marker;
+	LocationManager locationManager;
+	
+	private String provider;
+	private Double lat;
+	private Double lng;
+	 Location location;
+	 
+    // flag for GPS status
+    boolean isGPSEnabled = false;
+ 
+    // flag for network status
+    boolean isNetworkEnabled = false;
+ 
+    // flag for GPS status
+    boolean canGetLocation = false;
+ 
+   
+    double latitude; // latitude
+    double longitude; // longitude
+ 
+    // The minimum distance to change Updates in meters
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
+ 
+    // The minimum time between updates in milliseconds
+    private static final long MIN_TIME_BW_UPDATES = 500 * 60 * 1; // 30 segunos
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -91,7 +118,8 @@ public class Easy extends FragmentActivity implements   LocationListener {
 
 		        }else { // Google Play Services are available
 		        	
-		        	gps = new Gps(Easy.this);
+		        	
+		       // 	gps = new Gps(Easy.this);
 		        		// Getting reference to the SupportMapFragment
 			    	SupportMapFragment fragment = ( SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 			    			
@@ -102,27 +130,112 @@ public class Easy extends FragmentActivity implements   LocationListener {
 			    	mGoogleMap.setMyLocationEnabled(true);
 			    	
 			    	mGoogleMap.setTrafficEnabled(true);
+			    	Gps();
+			    	
+			    	//getPosicaoUsuario();
 			    	
 			    	
+//			    	MarkerOptions markerOptions = new MarkerOptions();
+//			    	
+//			    	markerOptions.position(gps.getLatLng());
+//			    	
 			    	// Getting LocationManager object from System Service LOCATION_SERVICE
-		            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-		            // Creating a criteria object to retrieve provider
-		            Criteria criteria = new Criteria();
-
-		            // Getting the name of the best provider
-		            String provider = locationManager.getBestProvider(criteria, true);
-
-		            // Getting Current Location From GPS
-		            Location location = locationManager.getLastKnownLocation(provider);
-
-		            if(location!=null){
-		                    onLocationChanged(location);
-		            }
-
-		            locationManager.requestLocationUpdates(provider, 20000, 0, this);
+//		            locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+//
+//		            // Creating a criteria object to retrieve provider
+//		            Criteria criteria = new Criteria();
+//
+//		            // Getting the name of the best provider
+//		            String provider = locationManager.getBestProvider(criteria, true);
+//
+//		            // Getting Current Location From GPS
+//		            location = locationManager.getLastKnownLocation(provider);
+//
+//		            if(location!=null){
+//		                    onLocationChanged(location);
+//		            }
+////
+//		            locationManager.requestLocationUpdates(provider, 20000, 0, this);
 		        }
+		        
+		        
 
+	}
+	
+	private void ativarGps(){
+		if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+		{
+			Intent intent = new Intent();
+			intent.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+			intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+			intent.setData(Uri.parse("3"));
+			this.sendBroadcast(intent);
+		}
+	
+	}
+	
+	
+	public void Gps(){
+		
+		 try {
+	            locationManager = (LocationManager) this
+	                    .getSystemService(LOCATION_SERVICE);
+	 
+	            ativarGps();
+	            // getting GPS status
+	            isGPSEnabled = locationManager
+	                    .isProviderEnabled(LocationManager.GPS_PROVIDER);
+	 
+	            // getting network status
+	            isNetworkEnabled = locationManager
+	                    .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+	 
+	            if (!isGPSEnabled && !isNetworkEnabled) {
+	                // no network provider is enabled
+	            } else {
+	                this.canGetLocation = true;
+	                // First get location from Network Provider
+	                if (isNetworkEnabled) {
+	                    locationManager.requestLocationUpdates(
+	                            LocationManager.NETWORK_PROVIDER,
+	                            MIN_TIME_BW_UPDATES,
+	                            MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+	                    Log.d("Network", "Network");
+	                    if (locationManager != null) {
+	                        location = locationManager
+	                                .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+	                        if (location != null) {
+	                            latitude = location.getLatitude();
+	                            longitude = location.getLongitude();
+	                        }
+	                    }
+	                }
+	                // if GPS Enabled get lat/long using GPS Services
+	                if (isGPSEnabled) {
+	                    if (location == null) {
+	                        locationManager.requestLocationUpdates(
+	                                LocationManager.GPS_PROVIDER,
+	                                MIN_TIME_BW_UPDATES,
+	                                MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+	                        Log.d("GPS Enabled", "GPS Enabled");
+	                        if (locationManager != null) {
+	                            location = locationManager
+	                                    .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+	                            if (location != null) {
+	                                latitude = location.getLatitude();
+	                                longitude = location.getLongitude();
+	                            }
+	                        }
+	                    }
+	                }
+	            }
+	 
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	 
+	       // return location;
+		
 	}
 	
 	public void getPosicaoUsuario(){
@@ -130,8 +243,12 @@ public class Easy extends FragmentActivity implements   LocationListener {
 
 			@Override
 			public void run() {
-				mLatitude = gps.getLatitude();
-				mLongitude = gps.getLongitude();
+//				mLatitude = gps.getLatitude();
+//				mLongitude = gps.getLongitude();
+//				marker = mGoogleMap.addMarker(new MarkerOptions()
+//				.title("Você está aqui!")
+//				.visible(true)
+//				.position(new LatLng(mLatitude,mLongitude )));
 				timeGetPosicao();
 			}
 			
@@ -228,6 +345,17 @@ public class Easy extends FragmentActivity implements   LocationListener {
 
 		String data = null;
 		
+		
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(Easy.this);
+			pDialog.setMessage(Html.fromHtml("<b>Search</b><br/>Loading Places..."));
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(false);
+			pDialog.show();
+		}
+		
+		
 		// Invoked by execute() method of this object
 		@Override
 		protected String doInBackground(String... url) {
@@ -241,7 +369,8 @@ public class Easy extends FragmentActivity implements   LocationListener {
 		
 		// Executed after the complete execution of doInBackground() method
 		@Override
-		protected void onPostExecute(String result){			
+		protected void onPostExecute(String result){	
+			pDialog.dismiss();
 			ParserTask parserTask = new ParserTask();
 			
 			// Start parsing the Google places in JSON format
@@ -283,6 +412,8 @@ public class Easy extends FragmentActivity implements   LocationListener {
 			mGoogleMap.clear();
 			
 			for(int i=0;i<list.size();i++){
+				
+				mGoogleMap.setOnMarkerClickListener(Easy.this);
 			
 				// Creating a marker
 	            MarkerOptions markerOptions = new MarkerOptions();
@@ -290,6 +421,8 @@ public class Easy extends FragmentActivity implements   LocationListener {
 	            // Getting a place from the places list
 	            HashMap<String, String> hmPlace = list.get(i);
 	
+	            
+	            
 	            // Getting latitude of the place
 	            double lat = Double.parseDouble(hmPlace.get("lat"));	            
 	            
@@ -308,17 +441,20 @@ public class Easy extends FragmentActivity implements   LocationListener {
 	            LatLng latLng = new LatLng(lat, lng);
 	          
 	            // Setting the position for the marker  
-	            markerOptions.position(latLng);
+	            //.position(latLng);
 	            
 	            //setting icon	           
 	           // markerOptions.icon(BitmapDescriptorFactory.fromFile(icon));
 	
 	            // Setting the title for the marker. 
 	            //This will be displayed on taping the marker
-	            markerOptions.title(name + " : " + vicinity);	            
+	            //markerOptions.title(name + " : " + vicinity);	            
 	
+	            marker = mGoogleMap.addMarker(new MarkerOptions()
+	            .position(latLng)
+	            .title(name + " : "+ vicinity));
 	            // Placing a marker on the touched position
-	            mGoogleMap.addMarker(markerOptions);            
+	           // mGoogleMap.addMarker(markerOptions);            
             
 			}		
 			
@@ -333,8 +469,10 @@ public class Easy extends FragmentActivity implements   LocationListener {
 		mLongitude = location.getLongitude();
 		LatLng latLng = new LatLng(mLatitude, mLongitude);
 		
+		
+		
      	
-     CameraPosition cameraPosition = new CameraPosition.Builder()
+		CameraPosition cameraPosition = new CameraPosition.Builder()
          .target(latLng)      // Sets the center of the map to Mountain View
          .zoom(15)                   // Sets the zoom
          .bearing(90)                // Sets the orientation of the camera to east
@@ -409,5 +547,15 @@ public class Easy extends FragmentActivity implements   LocationListener {
 
 	    return true;
 	  }
+
+	@Override
+	public boolean onMarkerClick(Marker marker) {
+		// TODO Auto-generated method stub
+		
+		if(marker.equals(marker)){
+			Toast.makeText(this, "Icone clicado", Toast.LENGTH_LONG).show();
+		}
+		return false;
+	}
 	
 }
